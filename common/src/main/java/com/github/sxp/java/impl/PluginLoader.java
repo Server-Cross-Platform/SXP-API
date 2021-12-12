@@ -8,8 +8,7 @@ import java.net.URL;
 import java.net.URLClassLoader;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Path;
-import java.util.Enumeration;
-import java.util.Locale;
+import java.util.*;
 import java.util.jar.JarFile;
 import java.util.stream.Collectors;
 import java.util.zip.ZipEntry;
@@ -17,11 +16,20 @@ import java.util.zip.ZipEntry;
 
 //Some cursed as fuck classloading...
 public class PluginLoader {
-    public CrossPlatformPlugin load(Path path) throws Exception {
+    public CrossPlatformPlugin[] plugins;
+
+    public PluginLoader(Path path) {
+        plugins = loadPlugins(path);
+    }
+    public PluginLoader(File path) {
+        plugins = loadPlugins(path);
+    }
+
+    private CrossPlatformPlugin load(Path path) throws Exception {
         return load(path.toFile());
     }
 
-    public CrossPlatformPlugin load(File file) throws Exception {
+    private CrossPlatformPlugin load(File file) throws Exception {
         JarFile jar = new JarFile(file);
         Enumeration<? extends ZipEntry> entries = jar.entries();
         InputStream stream = null;
@@ -49,5 +57,25 @@ public class PluginLoader {
         if (!(instance instanceof CrossPlatformPlugin plugin)) throw new PluginClasspathException(metaData.name);
         plugin.onStart();
         return plugin;
+    }
+
+    private CrossPlatformPlugin[] loadPlugins(Path path) {
+        return loadPlugins(path.toFile());
+    }
+
+    private CrossPlatformPlugin[] loadPlugins(File dir) {
+        if (dir == null) return new CrossPlatformPlugin[] {};
+        if (dir.listFiles() == null) return new CrossPlatformPlugin[] {};
+        List<CrossPlatformPlugin> plugins = new ArrayList<>();
+        for (File file : Objects.requireNonNull(dir.listFiles())) {
+            if (file.getName().toLowerCase(Locale.ROOT).endsWith(".jar")) {
+                try {
+                    CrossPlatformPlugin plugin = load(file);
+                    if (plugin == null) continue;
+                    plugins.add(plugin);
+                } catch (Exception ignored) {}
+            }
+        }
+        return plugins.toArray(CrossPlatformPlugin[]::new);
     }
 }

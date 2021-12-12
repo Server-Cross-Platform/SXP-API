@@ -1,0 +1,16 @@
+plugins {
+    id 'java'
+}
+
+repositories {
+    maven {
+        name = 'Fabric'
+        url = 'https://maven.fabricmc.net/'
+    }
+    mavenCentral()
+    gradlePluginPortal()
+}
+
+dependencies {
+    implementation project(":common")
+}
