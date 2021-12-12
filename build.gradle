@@ -2,7 +2,9 @@ plugins {
 	id 'maven-publish'
 	id "org.jetbrains.kotlin.jvm" version "1.6.0"
 	id "com.github.johnrengelman.shadow" version "7.1.0"
+	id 'java'
 }
+apply plugin: 'com.github.johnrengelman.shadow'
 
 sourceCompatibility = JavaVersion.VERSION_17
 targetCompatibility = JavaVersion.VERSION_17
@@ -17,8 +19,12 @@ repositories {
 }
 
 dependencies {
+	implementation project(path:"common",configuration:"shadow")
 	shadow project("common")
+	implementation project(path:"fabric",configuration:"shadow")
 	shadow project("fabric")
+	implementation 'com.google.code.gson:gson:2.8.9'
+	shadow 'com.google.code.gson:gson:2.8.9'
 }
 
 tasks.withType(JavaCompile).configureEach {
@@ -27,4 +33,16 @@ tasks.withType(JavaCompile).configureEach {
 
 java {
 	withSourcesJar()
+}
+
+jar {
+}
+
+shadowJar {
+	archiveBaseName.set('shadow')
+	mergeServiceFiles()
+}
+
+build {
+	dependsOn(shadowJar)
 }
