@@ -2,6 +2,8 @@ package com.github.sxp.java.impl;
 
 import com.google.gson.Gson;
 
+import java.io.InputStream;
+
 public class PluginMetaData {
     public String name = "";
     public String description = "";
@@ -13,7 +15,7 @@ public class PluginMetaData {
     public String toJson(Gson gson) {
         return gson.toJson(this);
     }
-    public static PluginMetaData fromJson(Gson gson, String json) {
-        return gson.fromJson(json,PluginMetaData.class);
+    public static PluginMetaData fromJson(Gson gson, InputStream json) {
+        return gson.fromJson(String.valueOf(json),PluginMetaData.class);
     }
 }

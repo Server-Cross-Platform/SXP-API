@@ -11,7 +11,7 @@ public abstract class CrossPlatformPlugin {
      * <p>
      * See: {@link com.github.sxp.java.impl.PluginMetaData}
      **/
-    PluginMetaData metadata;
+    public PluginMetaData metadata;
 
     /**
      * Method called when server finished loading

@@ -41,12 +41,7 @@ public class PluginLoader {
 
         if (stream == null) return null;
 
-        String text = new BufferedReader(
-                new InputStreamReader(stream, StandardCharsets.UTF_8))
-                .lines()
-                .collect(Collectors.joining("\n"));
-
-        PluginMetaData metaData = GsonHandler.loadMetaData(text);
+        PluginMetaData metaData = GsonHandler.loadMetaData(stream);
 
         URLClassLoader child = new URLClassLoader(
                 new URL[] {file.toURI().toURL()},
@@ -55,6 +50,7 @@ public class PluginLoader {
         Class<?> classToLoad = Class.forName(metaData.classpath, true, child);
         Object instance = classToLoad.newInstance();
         if (!(instance instanceof CrossPlatformPlugin plugin)) throw new PluginClasspathException(metaData.name);
+        plugin.metadata = metaData;
         plugin.onStart();
         return plugin;
     }
