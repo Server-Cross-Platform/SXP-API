@@ -1,18 +1,24 @@
 plugins {
-	id 'fabric-loom' version '0.10-SNAPSHOT'
 	id 'maven-publish'
 	id "org.jetbrains.kotlin.jvm" version "1.6.0"
+	id "com.github.johnrengelman.shadow" version "7.1.0"
 }
 
 sourceCompatibility = JavaVersion.VERSION_17
 targetCompatibility = JavaVersion.VERSION_17
 
 repositories {
+	maven {
+		name = 'Fabric'
+		url = 'https://maven.fabricmc.net/'
+	}
+	mavenCentral()
+	gradlePluginPortal()
 }
 
 dependencies {
-	minecraft "com.mojang:minecraft:${project.minecraft_version}"
-	mappings "net.fabricmc:yarn:${project.yarn_mappings}:v2"
+	shadow project("common")
+	shadow project("fabric")
 }
 
 tasks.withType(JavaCompile).configureEach {
