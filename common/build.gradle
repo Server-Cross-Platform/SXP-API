@@ -1,0 +1,23 @@
+plugins {
+	id "org.jetbrains.kotlin.jvm"
+}
+
+repositories {
+	maven {
+		name = 'Fabric'
+		url = 'https://maven.fabricmc.net/'
+	}
+	mavenCentral()
+	gradlePluginPortal()
+}
+
+dependencies {
+	implementation 'com.google.code.gson:gson:2.8.9'
+}
+
+sourceCompatibility = JavaVersion.VERSION_17
+targetCompatibility = JavaVersion.VERSION_17
+
+tasks.withType(JavaCompile).configureEach {
+	it.options.release = 17
+}
