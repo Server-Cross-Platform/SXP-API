@@ -1,0 +1,3 @@
+name: Server Cross Platofrm
+main: com.github.sxp.platform.spigot.InitializeSpigot
+version: 1.0

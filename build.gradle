@@ -14,6 +14,9 @@ repositories {
 		name = 'Fabric'
 		url = 'https://maven.fabricmc.net/'
 	}
+	maven {
+		url = "https://hub.spigotmc.org/nexus/content/repositories/public/"
+	}
 	mavenCentral()
 	gradlePluginPortal()
 }
@@ -23,6 +26,8 @@ dependencies {
 	shadow project("common")
 	implementation project(path:"fabric",configuration:"shadow")
 	shadow project("fabric")
+	implementation project(path:"spigot",configuration:"shadow")
+	shadow project("spigot")
 	implementation 'com.google.code.gson:gson:2.8.9'
 	shadow 'com.google.code.gson:gson:2.8.9'
 }

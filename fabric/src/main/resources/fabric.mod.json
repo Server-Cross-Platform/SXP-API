@@ -1,17 +1,13 @@
 {
   "schemaVersion": 1,
   "id": "sxp",
-  "version": "${version}",
+  "version": "1.0",
 
   "name": "Server Cross Platform",
   "description": "A serverside plugin API",
   "authors": [
     "Oliver"
-  ],
-  "contact": {
-    "homepage": "https://fabricmc.net/",
-    "sources": "https://github.com/FabricMC/fabric-example-mod"
-  },
+  ]
 
   "license": "CC0-1.0",
 
