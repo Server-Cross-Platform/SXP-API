@@ -28,8 +28,6 @@ dependencies {
 	shadow project("fabric")
 	implementation project(path:"spigot",configuration:"shadow")
 	shadow project("spigot")
-	implementation project(path:"standalone",configuration:"shadow")
-	shadow project("standalone")
 
 	implementation 'com.google.code.gson:gson:2.8.9'
 	shadow 'com.google.code.gson:gson:2.8.9'
