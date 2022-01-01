@@ -32,6 +32,7 @@ dependencies {
 	shadow project("standalone")
 
 	implementation 'com.google.code.gson:gson:2.8.9'
+	shadow 'com.google.code.gson:gson:2.8.9'
 }
 
 tasks.withType(JavaCompile).configureEach {
