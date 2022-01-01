@@ -3,6 +3,8 @@ package com.github.sxp.java.impl;
 import com.google.gson.Gson;
 
 import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.util.HashMap;
 
 public class PluginMetaData {
     public String name = "";
@@ -16,6 +18,6 @@ public class PluginMetaData {
         return gson.toJson(this);
     }
     public static PluginMetaData fromJson(Gson gson, InputStream json) {
-        return gson.fromJson(String.valueOf(json),PluginMetaData.class);
+        return gson.fromJson(new InputStreamReader(json),PluginMetaData.class);
     }
 }

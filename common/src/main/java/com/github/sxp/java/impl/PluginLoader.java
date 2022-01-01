@@ -2,19 +2,17 @@ package com.github.sxp.java.impl;
 
 import com.github.sxp.java.api.startup.CrossPlatformPlugin;
 import com.github.sxp.java.impl.error.PluginClasspathException;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
 import java.io.*;
 import java.net.URL;
 import java.net.URLClassLoader;
-import java.nio.charset.StandardCharsets;
 import java.nio.file.Path;
 import java.util.*;
 import java.util.jar.JarFile;
-import java.util.stream.Collectors;
 import java.util.zip.ZipEntry;
 
-
-//Some cursed as fuck classloading...
 public class PluginLoader {
     public CrossPlatformPlugin[] plugins;
 
@@ -25,11 +23,11 @@ public class PluginLoader {
         plugins = loadPlugins(path);
     }
 
-    private CrossPlatformPlugin load(Path path) throws Exception {
+    private CrossPlatformPlugin load(@NotNull Path path) throws Exception {
         return load(path.toFile());
     }
 
-    private CrossPlatformPlugin load(File file) throws Exception {
+    private @Nullable CrossPlatformPlugin load(File file) throws Exception {
         JarFile jar = new JarFile(file);
         Enumeration<? extends ZipEntry> entries = jar.entries();
         InputStream stream = null;
@@ -55,7 +53,7 @@ public class PluginLoader {
         return plugin;
     }
 
-    private CrossPlatformPlugin[] loadPlugins(Path path) {
+    private CrossPlatformPlugin[] loadPlugins(@NotNull Path path) {
         return loadPlugins(path.toFile());
     }
 

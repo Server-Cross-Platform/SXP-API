@@ -1,5 +1,6 @@
 package com.github.sxp.platform.spigot;
 
+import com.github.sxp.java.api.SxpData;
 import com.github.sxp.java.impl.PluginLoader;
 import org.bukkit.plugin.java.JavaPlugin;
 
@@ -8,13 +9,11 @@ import java.nio.file.Path;
 
 public class InitializeSpigot extends JavaPlugin {
     public static PluginLoader pluginLoader;
-    @Override
-    public void onEnable() {
-        getServer().getWorldContainer();
-    }
 
     @Override
-    public void onDisable() {
+    public void onLoad() {
+        SxpData.platform = "Spigot";
+        initPlugins();
     }
 
     public void initPlugins() {
