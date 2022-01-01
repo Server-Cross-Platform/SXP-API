@@ -28,11 +28,15 @@ dependencies {
 	shadow project("fabric")
 	implementation project(path:"spigot",configuration:"shadow")
 	shadow project("spigot")
+	implementation project(path:"standalone",configuration:"shadow")
+	shadow project("standalone")
+
 	implementation 'com.google.code.gson:gson:2.8.9'
 }
 
 tasks.withType(JavaCompile).configureEach {
 	it.options.release = 17
+
 }
 
 java {
@@ -40,10 +44,13 @@ java {
 }
 
 jar {
+	manifest {
+		attributes 'Main-Class': 'com.github.sxp.platform.standalone.InitializeStandalone'
+	}
 }
 
 shadowJar {
-	archiveBaseName.set('shadow')
+	archiveBaseName.set('SXP-API')
 	mergeServiceFiles()
 }
 
