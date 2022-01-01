@@ -2,9 +2,7 @@ package com.github.sxp.platform.standalone;
 
 import com.google.gson.Gson;
 
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
+import java.io.*;
 import java.nio.charset.StandardCharsets;
 
 public class InitializeStandalone {
@@ -13,7 +11,9 @@ public class InitializeStandalone {
         File config = new File("./SXP-config.json");
         McJarLoader loader = new McJarLoader();
         if (config.exists()) {
-            loader = gson.fromJson(String.valueOf(new FileInputStream(config)), McJarLoader.class);
+            var stream = new FileInputStream(config);
+            loader = gson.fromJson(new InputStreamReader(stream), McJarLoader.class);
+            stream.close();
         } else {
             var stream = new FileOutputStream(config);
             stream.write(gson.toJson(loader).getBytes(StandardCharsets.UTF_8));
