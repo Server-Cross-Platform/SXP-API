@@ -3,6 +3,7 @@ plugins {
 	id "org.jetbrains.kotlin.jvm" version "1.6.0"
 	id "com.github.johnrengelman.shadow" version "7.1.0"
 	id 'java'
+	id 'fabric-loom' version '0.10-SNAPSHOT' apply false
 }
 apply plugin: 'com.github.johnrengelman.shadow'
 
@@ -31,6 +32,15 @@ dependencies {
 
 	implementation 'com.google.code.gson:gson:2.8.9'
 	shadow 'com.google.code.gson:gson:2.8.9'
+}
+
+allprojects {
+	apply plugin: "fabric-loom"
+
+	dependencies {
+		minecraft "com.mojang:minecraft:1.18.1"
+		mappings "net.fabricmc:yarn:1.18.1+build.1:v2"
+	}
 }
 
 tasks.withType(JavaCompile).configureEach {
