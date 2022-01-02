@@ -12,6 +12,10 @@ public class XItemStack extends ItemStackWrapper {
         super(stack);
     }
 
+    /**
+     * Gets the item's lore
+     * @return The lore of the item
+     **/
     public NbtList getLore() {
         NbtCompound nbt = this.getNbt();
         NbtCompound display = new NbtCompound();
@@ -21,6 +25,10 @@ public class XItemStack extends ItemStackWrapper {
         return new NbtList();
     }
 
+    /**
+     * Sets the lore of the item
+     * @param lore The lore to set
+     **/
     public void setLore(NbtList lore) {
         NbtCompound nbt = this.getNbt();
         NbtCompound display = new NbtCompound();
@@ -30,18 +38,32 @@ public class XItemStack extends ItemStackWrapper {
         nbt.put("display",display);
     }
 
+    /**
+     * Appends a line of lore to the item
+     * @param lore The line to add
+     **/
     public void addLoreLine(Text lore) {
         NbtList list = getLore();
         list.add(NbtString.of(Text.Serializer.toJson(lore)));
         setLore(list);
     }
 
+    /**
+     * Sets a line of lore
+     * @param line The line number to change
+     * @param lore The lore to set
+     **/
     public void setLoreLine(int line, Text lore) {
         NbtList list = getLore();
         list.add(line, NbtString.of(Text.Serializer.toJson(lore)));
         setLore(list);
     }
 
+    /**
+     * Gets a line of lore
+     * @param line The line to get
+     * @return The line of lore
+     **/
     public Text getLoreLine(int line) {
         NbtList list = getLore();
         return Text.Serializer.fromJson(list.get(line).asString());
