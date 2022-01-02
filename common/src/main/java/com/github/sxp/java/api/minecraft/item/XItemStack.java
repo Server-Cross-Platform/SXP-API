@@ -7,6 +7,10 @@ import net.minecraft.nbt.NbtList;
 import net.minecraft.nbt.NbtString;
 import net.minecraft.text.Text;
 
+
+/**
+ * An abrstraction of a Minecraft ItemStack
+ **/
 public class XItemStack extends ItemStackWrapper {
     public XItemStack(ItemStack stack) {
         super(stack);
