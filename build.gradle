@@ -18,6 +18,7 @@ repositories {
 	maven {
 		url = "https://hub.spigotmc.org/nexus/content/repositories/public/"
 	}
+	maven { url "https://repo.maven.apache.org/maven2" }
 	mavenCentral()
 	gradlePluginPortal()
 }
@@ -36,10 +37,14 @@ dependencies {
 
 allprojects {
 	apply plugin: "fabric-loom"
+	apply plugin: "org.jetbrains.kotlin.jvm"
 
 	dependencies {
 		minecraft "com.mojang:minecraft:1.18.1"
 		mappings "net.fabricmc:yarn:1.18.1+build.1:v2"
+
+		implementation 'com.google.code.gson:gson:2.8.9'
+		modImplementation "net.fabricmc:fabric-loader:0.12.10"
 	}
 }
 

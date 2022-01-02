@@ -1,7 +1,6 @@
 package com.github.sxp.java.impl.wrapper;
 
 import com.github.sxp.java.api.minecraft.item.XItemStack;
-import com.google.common.collect.Lists;
 import com.google.common.collect.Multimap;
 import net.minecraft.block.BlockState;
 import net.minecraft.client.item.TooltipData;
