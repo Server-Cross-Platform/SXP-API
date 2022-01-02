@@ -1,6 +1,7 @@
 package com.github.sxp.java.impl.wrapper;
 
-import com.github.sxp.java.api.item.XItemStack;
+import com.github.sxp.java.api.minecraft.item.XItemStack;
+import com.google.common.collect.Lists;
 import com.google.common.collect.Multimap;
 import net.minecraft.block.BlockState;
 import net.minecraft.client.item.TooltipData;
@@ -127,6 +128,4 @@ public class ItemStackWrapper {
     public void setCount(int count) {
         itemStack.setCount(count);
     }
-
-
 }

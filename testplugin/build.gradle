@@ -11,6 +11,10 @@ repositories {
     gradlePluginPortal()
 }
 
+targetCompatibility = JavaVersion.VERSION_16
+sourceCompatibility = JavaVersion.VERSION_16
+
+
 dependencies {
     implementation project(path: ":common", configuration: 'default')
 }

@@ -19,6 +19,8 @@ dependencies {
 
     implementation project(path: ":common", configuration: 'default')
 }
+targetCompatibility = JavaVersion.VERSION_16
+sourceCompatibility = JavaVersion.VERSION_16
 
 shadowJar {
     configurations = [project.configurations.shadow]
