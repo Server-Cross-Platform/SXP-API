@@ -7,11 +7,11 @@
   "description": "A serverside plugin API",
   "authors": [
     "Oliver"
-  ]
+  ],
 
   "license": "CC0-1.0",
 
-  "environment": "*",
+  "environment": "server",
   "entrypoints": {
     "main": [
       "com.github.sxp.java.platform.fabric.InitializeFabric"
