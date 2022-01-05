@@ -68,7 +68,6 @@ jar {
 
 shadowJar {
 	archiveBaseName.set('SXP-API')
-	mergeServiceFiles()
 }
 
 build {
