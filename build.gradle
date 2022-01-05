@@ -3,7 +3,6 @@ plugins {
 	id "org.jetbrains.kotlin.jvm" version "1.6.0"
 	id "com.github.johnrengelman.shadow" version "7.1.0"
 	id 'java'
-	id 'fabric-loom' version '0.10-SNAPSHOT' apply false
 }
 apply plugin: 'com.github.johnrengelman.shadow'
 
@@ -31,8 +30,8 @@ dependencies {
 	implementation project(path:"spigot",configuration:"shadow")
 	shadow project("spigot")
 
-	implementation "org.ow2.asm:asm:6.0"
-	shadow "org.ow2.asm:asm:6.0"
+	implementation 'org.ow2.asm:asm:9.2'
+	shadow 'org.ow2.asm:asm:9.2'
 	implementation "org.jetbrains.kotlin:kotlin-stdlib:1.6.0"
 	shadow "org.jetbrains.kotlin:kotlin-stdlib:1.6.0"
 	implementation 'com.google.code.gson:gson:2.8.9'
@@ -40,17 +39,12 @@ dependencies {
 }
 
 allprojects {
-	apply plugin: "fabric-loom"
 	apply plugin: "org.jetbrains.kotlin.jvm"
 
 	dependencies {
-		minecraft "com.mojang:minecraft:1.18.1"
-		mappings "net.fabricmc:yarn:1.18.1+build.1:v2"
-
 		implementation "org.ow2.asm:asm:6.0"
 		implementation "org.jetbrains.kotlin:kotlin-stdlib:1.6.0"
 		implementation 'com.google.code.gson:gson:2.8.9'
-		modImplementation "net.fabricmc:fabric-loader:0.12.10"
 	}
 }
 
@@ -64,11 +58,6 @@ java {
 }
 
 jar {
-}
-
-remapJar {
-	dependsOn(shadowJar)
-	input.set shadowJar.archiveFile.get()
 }
 
 shadowJar {
