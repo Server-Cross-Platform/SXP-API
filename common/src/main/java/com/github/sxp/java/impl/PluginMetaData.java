@@ -7,8 +7,10 @@ import java.io.InputStreamReader;
 
 public class PluginMetaData {
     public String name = "";
+    public String id = "";
     public String description = "";
     public String[] authors = {};
+    public String version = "";
     public String classpath = "";
 
     public PluginMetaData() {}
