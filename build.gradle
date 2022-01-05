@@ -66,8 +66,14 @@ java {
 jar {
 }
 
+remapJar {
+	dependsOn(shadowJar)
+	input.set shadowJar.archiveFile.get()
+}
+
 shadowJar {
 	archiveBaseName.set('SXP-API')
+	configurations = [project.configurations.shadow]
 }
 
 build {
