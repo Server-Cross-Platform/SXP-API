@@ -4,12 +4,11 @@ plugins {
 }
 
 repositories {
+	mavenLocal()
 	maven {
 		url = "https://hub.spigotmc.org/nexus/content/repositories/public/"
 	}
 	mavenCentral()
-	gradlePluginPortal()
-	mavenLocal()
 }
 
 targetCompatibility = JavaVersion.VERSION_16
