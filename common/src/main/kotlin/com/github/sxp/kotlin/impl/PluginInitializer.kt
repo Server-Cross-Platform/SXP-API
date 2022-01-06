@@ -10,3 +10,8 @@ fun init() {
     if (!pluginFile.exists()) pluginFile.mkdir()
     pluginLoader = PluginLoader(pluginPath)
 }
+fun close() {
+    for (plugin in pluginLoader.plugins) {
+        plugin.onStop()
+    }
+}

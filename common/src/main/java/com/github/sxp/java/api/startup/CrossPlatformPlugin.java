@@ -14,7 +14,7 @@ public abstract class CrossPlatformPlugin {
     public PluginMetaData metadata;
 
     /**
-     * Method called when server finished loading
+     * Method called when plugin loads
      **/
     public abstract void onStart();
 

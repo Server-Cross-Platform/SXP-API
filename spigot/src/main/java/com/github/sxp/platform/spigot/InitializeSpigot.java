@@ -10,4 +10,9 @@ public class InitializeSpigot extends JavaPlugin {
         SxpData.platform = "Spigot";
         PluginInitializerKt.init();
     }
+
+    @Override
+    public void onDisable() {
+        PluginInitializerKt.close();
+    }
 }
