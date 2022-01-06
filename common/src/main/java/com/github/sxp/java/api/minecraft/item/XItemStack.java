@@ -2,6 +2,7 @@ package com.github.sxp.java.api.minecraft.item;
 
 import com.github.sxp.java.api.minecraft.nbt.XNbt;
 import com.github.sxp.java.api.minecraft.nbt.XTag;
+import com.github.sxp.java.impl.error.InvalidItemStackException;
 import com.github.sxp.java.impl.wrapper.ItemStackWrapper;
 
 
@@ -11,6 +12,7 @@ import com.github.sxp.java.impl.wrapper.ItemStackWrapper;
 public class XItemStack implements ItemStackWrapper {
     ItemStackWrapper stack;
     public XItemStack(ItemStackWrapper stack) {
+        if (stack instanceof XItemStack) throw new InvalidItemStackException();
         this.stack = stack;
     }
 
