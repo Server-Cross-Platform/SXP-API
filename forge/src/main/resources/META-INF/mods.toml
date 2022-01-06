@@ -1,0 +1,16 @@
+modLoader="javafml"
+loaderVersion="[39,)"
+icense="All rights reserved"
+[[mods]]
+modId="sxp"
+version="1.0.0"
+displayName="SXP API"
+authors="Oliver"
+description='''
+
+'''
+[[dependencies.examplemod]]
+    modId="minecraft"
+    mandatory=trueversionRange="[1.18.1,1.19)"
+    ordering="NONE"
+    side="BOTH"
