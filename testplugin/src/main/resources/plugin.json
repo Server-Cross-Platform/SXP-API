@@ -1,9 +1,11 @@
 {
   "name": "Example Plugin",
+  "id": "example",
   "description": "Plugin Description",
   "authors": [
     "name goes here!"
   ],
+  "version": "1.0.0",
 
   "classpath": "com.github.sxp.test.TestPlugin"
 }
