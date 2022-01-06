@@ -2,7 +2,6 @@ package com.github.sxp.java.impl;
 
 import com.github.sxp.java.api.startup.CrossPlatformPlugin;
 import com.github.sxp.java.impl.error.PluginClasspathException;
-import com.github.sxp.kotlin.impl.TestKotlinKt;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
@@ -59,7 +58,6 @@ public class PluginLoader {
     }
 
     private CrossPlatformPlugin[] loadPlugins(File dir) {
-        TestKotlinKt.test();
         if (dir == null) return new CrossPlatformPlugin[] {};
         if (dir.listFiles() == null) return new CrossPlatformPlugin[] {};
         List<CrossPlatformPlugin> plugins = new ArrayList<>();
