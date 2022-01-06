@@ -1,8 +1,12 @@
 package com.github.sxp.java.impl.wrapper;
 
+import com.github.sxp.java.api.minecraft.item.XItem;
 import com.github.sxp.java.api.minecraft.item.XItemStack;
+import com.github.sxp.java.api.minecraft.nbt.XNbt;
+import com.github.sxp.java.api.minecraft.nbt.XTag;
 
 public interface ItemStackWrapper {
+    XItemStack fromNbt(XNbt nbt);
 
     boolean isEmpty();
 
@@ -25,4 +29,10 @@ public interface ItemStackWrapper {
     int getCount();
 
     void setCount(int count);
+
+    boolean isIn(XTag<XItem> tag);
+
+    boolean isOf(XItem item);
+
+    XNbt getNbt();
 }
