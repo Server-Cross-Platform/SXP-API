@@ -1,23 +1,24 @@
-package com.github.sxp.platform.spigot;
+package com.github.sxp.platform.forge;
 
 import com.github.sxp.java.api.SxpData;
 import com.github.sxp.java.impl.PluginLoader;
-import org.bukkit.plugin.java.JavaPlugin;
+import net.minecraftforge.common.ForgeConfig;
+import net.minecraftforge.fml.common.Mod;
 
 import java.io.File;
 import java.nio.file.Path;
 
-public class InitializeSpigot extends JavaPlugin {
+@Mod("SXP-API")
+public class InitializeForge {
     public static PluginLoader pluginLoader;
 
-    @Override
-    public void onLoad() {
-        SxpData.platform = "Spigot";
-        initPlugins();
+    public InitializeForge() {
+        SxpData.platform = "forge";
+
     }
 
-    public void initPlugins() {
-        Path pluginPath =  Path.of("./XPlugins");
+    public static void initPlugins() {
+        Path pluginPath = Path.of("./XPlugins");
         File pluginFile = pluginPath.toFile();
         if (!pluginFile.exists())
             pluginFile.mkdir();

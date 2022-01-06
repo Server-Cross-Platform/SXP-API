@@ -1,0 +1,15 @@
+plugins {
+    id "dev.architectury.loom" version "0.10.0-SNAPSHOT"
+}
+
+dependencies {
+    minecraft "com.mojang:minecraft:1.18.1"
+    mappings "net.fabricmc:yarn:1.18.1+build.1:v2"
+
+    forge "net.minecraftforge:forge:1.18.1-39.0.10"
+    implementation project(path: ":common", configuration: 'default')
+}
+
+java {
+    withSourcesJar()
+}

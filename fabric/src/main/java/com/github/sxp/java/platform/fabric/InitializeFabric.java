@@ -17,7 +17,7 @@ public class InitializeFabric implements ModInitializer {
     }
 
     public void initPlugins() {
-        Path pluginPath = FabricLoader.getInstance().getGameDir().resolve("XPlugins");
+        Path pluginPath =  Path.of("./XPlugins");
         File pluginFile = pluginPath.toFile();
         if (!pluginFile.exists())
             pluginFile.mkdir();
