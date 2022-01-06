@@ -9,6 +9,7 @@ repositories {
 	}
 	mavenCentral()
 	gradlePluginPortal()
+	mavenLocal()
 }
 
 targetCompatibility = JavaVersion.VERSION_16
@@ -16,5 +17,6 @@ sourceCompatibility = JavaVersion.VERSION_16
 
 dependencies {
 	implementation 'org.spigotmc:spigot-api:1.18.1-R0.1-SNAPSHOT'
+	implementation "org.spigotmc:minecraft-server:1.18.1-R0.1-SNAPSHOT"
 	implementation project(path: ":common", configuration: 'default')
 }
