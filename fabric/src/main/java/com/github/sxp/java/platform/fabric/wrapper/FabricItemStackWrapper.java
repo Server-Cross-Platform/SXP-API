@@ -1,17 +1,15 @@
-package com.github.sxp.java.api.minecraft.item;
+package com.github.sxp.java.platform.fabric.wrapper;
 
+import com.github.sxp.java.api.minecraft.item.XItem;
+import com.github.sxp.java.api.minecraft.item.XItemStack;
 import com.github.sxp.java.api.minecraft.nbt.XNbt;
-import com.github.sxp.java.impl.error.InvalidItemStackException;
 import com.github.sxp.java.impl.wrapper.ItemStackWrapper;
+import net.minecraft.item.ItemStack;
 
+public class FabricItemStackWrapper implements ItemStackWrapper {
+    protected final ItemStack stack;
 
-/**
- * An abrstraction of a Minecraft ItemStack
- **/
-public class XItemStack implements ItemStackWrapper {
-    ItemStackWrapper stack;
-    public XItemStack(ItemStackWrapper stack) {
-        if (stack instanceof XItemStack) throw new InvalidItemStackException();
+    public FabricItemStackWrapper(ItemStack stack) {
         this.stack = stack;
     }
 
@@ -22,12 +20,12 @@ public class XItemStack implements ItemStackWrapper {
 
     @Override
     public XItemStack split(int amount) {
-        return stack.split(amount);
+        return new XItemStack(new FabricItemStackWrapper(stack.split(amount)));
     }
 
     @Override
     public int getMaxCount() {
-        return stack.getCount();
+        return stack.getMaxCount();
     }
 
     @Override
@@ -72,11 +70,12 @@ public class XItemStack implements ItemStackWrapper {
 
     @Override
     public boolean isOf(XItem item) {
-        return stack.isOf(item);
+        FabricItemWrapper wrapper = (FabricItemWrapper)item.getItem();
+        return stack.isOf(wrapper.item);
     }
 
     @Override
     public XNbt getNbt() {
-        return stack.getNbt();
+        return new XNbt(new FabricNbtWrapper(stack.getOrCreateNbt()));
     }
 }
