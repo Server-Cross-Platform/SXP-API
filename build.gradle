@@ -31,6 +31,8 @@ dependencies {
 	implementation project(path:"spigot",configuration:"default")
 
 	implementation 'org.ow2.asm:asm:9.2'
+	implementation 'org.ow2.asm:asm-util:9.2'
+	shadow 'org.ow2.asm:asm-util:9.2'
 	implementation "org.jetbrains.kotlin:kotlin-stdlib:1.6.0"
 	shadow "org.jetbrains.kotlin:kotlin-stdlib:1.6.0"
 	implementation 'com.github.Fylipp:easy-events:v1.1.0'
@@ -46,6 +48,7 @@ allprojects {
 
 	dependencies {
 		compileOnly 'org.ow2.asm:asm:9.2'
+		implementation 'org.ow2.asm:asm-util:9.2'
 		implementation "org.jetbrains.kotlin:kotlin-stdlib:1.6.0"
 		compileOnly 'com.google.code.gson:gson:2.8.9'
 		implementation 'com.github.Fylipp:easy-events:v1.1.0'
