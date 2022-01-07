@@ -52,11 +52,20 @@ allprojects {
 		implementation 'com.google.code.gson:gson:2.8.9'
 		implementation 'com.github.Fylipp:easy-events:v1.1.0'
 	}
+
+	compileKotlin {
+
+	}
 }
 
 tasks.withType(JavaCompile).configureEach {
 	it.options.release = 17
 
+}
+tasks.withType(org.jetbrains.kotlin.gradle.tasks.KotlinCompile) {
+	kotlinOptions {
+		jvmTarget = "17"
+	}
 }
 
 java {
