@@ -21,6 +21,7 @@ repositories {
 	mavenCentral()
 	gradlePluginPortal()
 	mavenLocal()
+	maven { url "https://jitpack.io" }
 }
 
 dependencies {
@@ -32,20 +33,24 @@ dependencies {
 	shadow project("spigot")
 
 	implementation 'org.ow2.asm:asm:9.2'
-	shadow 'org.ow2.asm:asm:9.2'
 	implementation "org.jetbrains.kotlin:kotlin-stdlib:1.6.0"
 	shadow "org.jetbrains.kotlin:kotlin-stdlib:1.6.0"
-	implementation 'com.google.code.gson:gson:2.8.9'
-	shadow 'com.google.code.gson:gson:2.8.9'
+	implementation 'com.github.Fylipp:easy-events:v1.1.0'
+	shadow 'com.github.Fylipp:easy-events:v1.1.0'
 }
 
 allprojects {
 	apply plugin: "org.jetbrains.kotlin.jvm"
 
+	repositories {
+		maven { url "https://jitpack.io" }
+	}
+
 	dependencies {
-		implementation "org.ow2.asm:asm:6.0"
+		implementation 'org.ow2.asm:asm:9.2'
 		implementation "org.jetbrains.kotlin:kotlin-stdlib:1.6.0"
 		implementation 'com.google.code.gson:gson:2.8.9'
+		implementation 'com.github.Fylipp:easy-events:v1.1.0'
 	}
 }
 
