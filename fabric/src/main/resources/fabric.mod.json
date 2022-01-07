@@ -14,7 +14,7 @@
   "environment": "server",
   "entrypoints": {
     "main": [
-      "com.github.sxp.java.platform.fabric.InitializeFabric"
+      "com.github.sxp.platform.fabric.InitializeFabric"
     ]
   },
   "mixins": [

@@ -1,4 +1,4 @@
-package com.github.sxp.java.platform.fabric.wrapper;
+package com.github.sxp.platform.fabric.wrapper;
 
 import com.github.sxp.java.api.minecraft.item.XItem;
 import com.github.sxp.java.api.minecraft.item.XItemStack;

@@ -1,4 +1,4 @@
-package com.github.sxp.java.platform.fabric;
+package com.github.sxp.platform.fabric;
 
 import com.github.sxp.java.api.SxpData;
 import com.github.sxp.kotlin.impl.PluginInitializerKt;

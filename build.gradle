@@ -25,12 +25,10 @@ repositories {
 }
 
 dependencies {
-	implementation project(path:"common",configuration:"shadow")
-	shadow project("common")
-	implementation project(path:"fabric",configuration:"shadow")
-	shadow project("fabric")
-	implementation project(path:"spigot",configuration:"shadow")
-	shadow project("spigot")
+	implementation project(path:"common",configuration:"default")
+	implementation project(path:"fabric",configuration:"default")
+	implementation project(path:"forge" ,configuration:"default")
+	implementation project(path:"spigot",configuration:"default")
 
 	implementation 'org.ow2.asm:asm:9.2'
 	implementation "org.jetbrains.kotlin:kotlin-stdlib:1.6.0"
@@ -47,25 +45,22 @@ allprojects {
 	}
 
 	dependencies {
-		implementation 'org.ow2.asm:asm:9.2'
+		compileOnly 'org.ow2.asm:asm:9.2'
 		implementation "org.jetbrains.kotlin:kotlin-stdlib:1.6.0"
-		implementation 'com.google.code.gson:gson:2.8.9'
+		compileOnly 'com.google.code.gson:gson:2.8.9'
 		implementation 'com.github.Fylipp:easy-events:v1.1.0'
 	}
 
-	compileKotlin {
-
+	tasks.withType(org.jetbrains.kotlin.gradle.tasks.KotlinCompile) {
+		kotlinOptions {
+			jvmTarget = "17"
+		}
 	}
 }
 
 tasks.withType(JavaCompile).configureEach {
 	it.options.release = 17
 
-}
-tasks.withType(org.jetbrains.kotlin.gradle.tasks.KotlinCompile) {
-	kotlinOptions {
-		jvmTarget = "17"
-	}
 }
 
 java {
@@ -76,8 +71,7 @@ jar {
 }
 
 shadowJar {
-	archiveBaseName.set('SXP-API')
-	configurations = [project.configurations.shadow]
+
 }
 
 build {

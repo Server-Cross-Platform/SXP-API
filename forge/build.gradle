@@ -1,4 +1,5 @@
 plugins {
+    id "com.github.johnrengelman.shadow"
     id "dev.architectury.loom" version "0.10.0-SNAPSHOT"
 }
 
@@ -8,6 +9,10 @@ dependencies {
 
     forge "net.minecraftforge:forge:1.18.1-39.0.10"
     implementation project(path: ":common", configuration: 'default')
+}
+
+shadowJar {
+
 }
 
 java {
