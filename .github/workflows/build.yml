@@ -42,6 +42,5 @@ jobs:
         with:
           name: Artifacts
           path: build/libs/
-      - name: publish to github packages
-        run: ./gradlew publish
+
 
