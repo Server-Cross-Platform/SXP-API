@@ -65,7 +65,7 @@ allprojects {
 	}
 }
 
-subProjects {
+subprojects {
 	publishing {
 		repositories {
 			maven {
