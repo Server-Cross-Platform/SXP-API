@@ -42,3 +42,7 @@ jobs:
         with:
           name: Artifacts
           path: build/libs/
+      - name: upload to maven
+        with:
+          repo-token: ${{ secrets.GITHUB_TOKEN }}
+        run: ./gradlew publish

@@ -6,8 +6,12 @@ plugins {
 }
 apply plugin: 'com.github.johnrengelman.shadow'
 
-sourceCompatibility = JavaVersion.VERSION_16
-targetCompatibility = JavaVersion.VERSION_16
+sourceCompatibility = JavaVersion.VERSION_17
+targetCompatibility = JavaVersion.VERSION_17
+
+archivesBaseName = project.archives_base_name
+version = project.mod_version
+group = project.maven_group
 
 repositories {
 	maven {
@@ -57,6 +61,26 @@ allprojects {
 	tasks.withType(org.jetbrains.kotlin.gradle.tasks.KotlinCompile) {
 		kotlinOptions {
 			jvmTarget = "17"
+		}
+	}
+}
+
+subProjects {
+	publishing {
+		repositories {
+			maven {
+				name = "GitHubPackages"
+				url = uri("https://maven.pkg.github.com/Server-Cross-Platform/SXP-API")
+				credentials {
+					username = "Oliver-makes-code"
+					password = project.findProperty("gpr.key") ?: System.getenv("TOKEN")
+				}
+			}
+		}
+		publications {
+			gpr(MavenPublication) {
+				from(components.java)
+			}
 		}
 	}
 }
