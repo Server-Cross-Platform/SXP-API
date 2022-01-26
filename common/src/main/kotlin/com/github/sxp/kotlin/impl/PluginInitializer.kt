@@ -3,7 +3,7 @@ package com.github.sxp.kotlin.impl
 import com.github.sxp.java.impl.PluginLoader
 import java.nio.file.Path
 
-var pluginLoader: PluginLoader = TODO()
+lateinit var pluginLoader: PluginLoader
 fun init() {
     val pluginPath = Path.of("./XPlugins")
     val pluginFile = pluginPath.toFile()

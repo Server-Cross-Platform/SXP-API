@@ -1,4 +1,5 @@
 plugins {
+	id 'maven-publish'
 	id "com.github.johnrengelman.shadow"
 	id 'java'
 }
@@ -26,4 +27,27 @@ targetCompatibility = JavaVersion.VERSION_16
 
 tasks.withType(JavaCompile).configureEach {
 	it.options.release = 17
+}
+
+publishing {
+	repositories {
+		maven {
+			url "https://mvn.olivermakesco.de/snapshots"
+			credentials {
+				username = "oliver"
+				password = "$System.env.REPO_TOKEN"
+			}
+			authentication {
+				basic(BasicAuthentication)
+			}
+		}
+	}
+	publications {
+		maven(MavenPublication) {
+			groupId = project.maven_group
+			artifactId = project.archives_base_name
+			version = project.mod_version
+			from components.java
+		}
+	}
 }
